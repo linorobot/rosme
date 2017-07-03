@@ -42,7 +42,7 @@ rosdep install --default-yes --from-paths . --ignore-src --rosdistro $ROSDISTRO
 source /opt/ros/$ROSDISTRO/setup.bash
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
 
-echo "/opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
 source ~/.bashrc 
 
 echo ""
