@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+language: bash
+
+compiler:
+  - gcc
+
+install:
+  - cd
+  - git clone https://github.com/linorobot/rosme
+  - cd rosme
+  - sudo ./install
+
+notifications:
+  email:
+  - jimenojmm@gmail.com
