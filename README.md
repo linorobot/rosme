@@ -8,6 +8,6 @@ Installs ros-indigo-base (barebones) on non X86 machines.
 
 Run:
 
-'''
+```
   ./install
-'''
+```
