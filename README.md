@@ -4,4 +4,10 @@ ROS installation files. This will automatically detect your Ubuntu Release and i
 Ubuntu 14.04 - ROS Indigo   
 Ubuntu 16.04 - ROS Kinetic
 
-If your machine is not an x86_64 it'll will install ros-indigo-base (barebones).
+Installs ros-indigo-base (barebones) on non X86 machines.
+
+Run:
+
+'''
+  ./install
+'''
