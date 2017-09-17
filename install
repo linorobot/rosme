@@ -8,12 +8,12 @@ RELEASE=$(lsb_release -c -s)
 if [ $RELEASE == "trusty" ]
     then
         ROSDISTRO=indigo
-        echo $ROSDISTRO
+        echo Installing ros-$ROSDISTRO
 
 elif [ $RELEASE == "xenial" ]
     then
         ROSDISTRO=kinetic
-        echo $ROSDISTRO
+        echo Installing ros-$ROSDISTRO
 else
     echo "There's no ROS Distro compatible for your platform"
     exit 1
