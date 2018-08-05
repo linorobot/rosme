@@ -8,16 +8,21 @@ RELEASE=$(lsb_release -c -s)
 if [ $RELEASE == "trusty" ]
     then
         ROSDISTRO=indigo
-        echo Installing ros-$ROSDISTRO
 
 elif [ $RELEASE == "xenial" ]
     then
         ROSDISTRO=kinetic
-        echo Installing ros-$ROSDISTRO
+       
+elif [ $RELEASE == "bionic" ]
+    then
+        ROSDISTRO=melodic
+        
 else
     echo "There's no ROS Distro compatible for your platform"
     exit 1
 fi
+
+echo Installing ros-$ROSDISTRO
 
 sudo apt-get update
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
