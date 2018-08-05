@@ -6,7 +6,7 @@ Works on:
 - Ubuntu 16.04 - ROS Kinetic
 - Ubuntu 18.04 - ROS Melodic
 
-Installs ros-indigo-base (barebones) on non X86 machines.
+Installs ros-$DISTRO-base (barebones) on non X86 machines.
 
 Run:
 
