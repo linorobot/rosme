@@ -3,6 +3,7 @@ ROS installation files. This will automatically detect your Ubuntu Release and i
 
 Ubuntu 14.04 - ROS Indigo   
 Ubuntu 16.04 - ROS Kinetic
+Ubuntu 18.04 - ROS Melodic
 
 Installs ros-indigo-base (barebones) on non X86 machines.
 
