@@ -24,33 +24,35 @@ fi
 
 echo Installing ros-$ROSDISTRO
 
-sudo apt-get update
+sudo apt update
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-sudo apt-get update
-sudo apt-get -y install dpkg
+sudo apt -y update
+sudo apt -y install dpkg
 
 if [ $ARCH == "x86_64" ]
     then
-        sudo apt-get -y install ros-$ROSDISTRO-desktop-full
+        sudo apt -y install ros-$ROSDISTRO-desktop-full
         echo "Installing ROS-$ROSDISTRO Full Desktop Version"
 
 else  
-    sudo apt-get -y install ros-$ROSDISTRO-ros-base
+    sudo apt -y install ros-$ROSDISTRO-ros-base
     echo "Installing ROS-$ROSDISTRO Barebones"
 fi
 
-sudo apt-get install python-rosdep -y
+source /opt/ros/$ROSDISTRO/setup.bash
+echo "source /opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
+source ~/.bashrc 
+
+sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 sudo `which rosdep` init
 rosdep update
 
 rosdep install --default-yes --from-paths . --ignore-src --rosdistro $ROSDISTRO
-source /opt/ros/$ROSDISTRO/setup.bash
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
-
-echo "source /opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
-source ~/.bashrc 
 
 echo ""
 echo "ROS $(rosversion -d) Installation Done!"
 echo "You can create your catkin workspace now. https://wiki.ros.org/catkin/Tutorials/create_a_workspace"
+
+#rosdep fail
+#https://github.com/ros-infrastructure/rosdep/issues/322
