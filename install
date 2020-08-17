@@ -16,7 +16,9 @@ elif [ $RELEASE == "xenial" ]
 elif [ $RELEASE == "bionic" ]
     then
         ROSDISTRO=melodic
-        
+elif [ $RELEASE == "focal" ]
+    then
+        ROSDISTRO=noetic
 else
     echo "There's no ROS Distro compatible for your platform"
     exit 1
