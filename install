@@ -46,7 +46,13 @@ source /opt/ros/$ROSDISTRO/setup.bash
 echo "source /opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
 source ~/.bashrc 
 
-sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+if [ $ROSDISTRO == "noetic" ]
+    then
+        sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+else
+    sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+fi
+
 sudo `which rosdep` init
 rosdep update
 
