@@ -51,9 +51,9 @@ if [ $ROSDISTRO == "noetic" ]
         sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 else
     sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+    sudo `which rosdep` init
 fi
 
-sudo `which rosdep` init
 rosdep update
 
 rosdep install --default-yes --from-paths . --ignore-src --rosdistro $ROSDISTRO
