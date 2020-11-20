@@ -16,7 +16,9 @@ elif [ $RELEASE == "xenial" ]
 elif [ $RELEASE == "bionic" ]
     then
         ROSDISTRO=melodic
-        
+elif [ $RELEASE == "focal" ]
+    then
+        ROSDISTRO=noetic
 else
     echo "There's no ROS Distro compatible for your platform"
     exit 1
@@ -44,8 +46,14 @@ source /opt/ros/$ROSDISTRO/setup.bash
 echo "source /opt/ros/$ROSDISTRO/setup.bash" >> ~/.bashrc
 source ~/.bashrc 
 
-sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
-sudo `which rosdep` init
+if [ $ROSDISTRO == "noetic" ]
+    then
+        sudo apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+else
+    sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+    sudo `which rosdep` init
+fi
+
 rosdep update
 
 rosdep install --default-yes --from-paths . --ignore-src --rosdistro $ROSDISTRO
